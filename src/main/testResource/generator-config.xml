@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!--是否去除注释-->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--配置数据库连接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/yangguangsister?useSSL=false"
+                        userId="root"
+                        password="mysql">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--指定生成实体类-->
+        <javaModelGenerator targetPackage="com.yangguang.entity"
+                            targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!--指定mapper映射文件-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--dao接口位置-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.yangguang.dao"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--每个表的生成策略-->
+        <!--<table tableName="employee" domainObjectName="Employee"></table>
+        <table tableName="emp_work" domainObjectName="EmployeeWork"></table>
+        <table tableName="emp_family" domainObjectName="EmployeeFamily"></table>
+        <table tableName="user" domainObjectName="User"></table>-->
+        <table tableName="title" domainObjectName="Title"></table>
+    </context>
+</generatorConfiguration>

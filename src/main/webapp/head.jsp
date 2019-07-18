@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <title>员工管理系统</title>
+    <title>阳光大姐(东港店)</title>
     <!--字体图标-->
     <link href="<%=path%>/static/css/icomoon.css" rel="stylesheet" />
     <!--动画-->

@@ -9,7 +9,7 @@
     <link href="<%=path%>/static/css/login2.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1>欢迎登录员工管理</h1>
+<h1>欢迎登录阳光大姐员工管理</h1>
 
 <div class="login" style="margin-top:50px;">
 
@@ -114,8 +114,8 @@
                     "user/login",
                     {username:parseInt($("#u").val()),password:$("#p").val()},
                     function (data) {
-                        if(data.success){
-                                location.href="user/indexAdmin";
+                        if(data.code==0){
+                                location.href="user/index";
                         }else {
                             alert("用户名或密码错误！");
                         }

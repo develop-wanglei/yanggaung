@@ -3,41 +3,24 @@
 <div class="admin-left">
     <!--logo-->
     <div class="logo">
-        <h1>员工管理系统</h1>
+        <h1>阳光大姐(东港店)</h1>
     </div>
     <!--左侧菜单-->
 
     <div id="menu" class="menu">
         <ul>
             <li class="menu-item">
-                <a href="<%=path%>/user/indexAdmin"><span class="icon-home2"></span>主页</a>
+                <a href="<%=path%>/user/index"><span class="icon-home2"></span>主页</a>
             </li>
             <li class="menu-item">
                 <a href="javascript:;"><span class="icon-users"></span>员工管理<i class="icon-keyboard_arrow_left"></i></a>
                 <ul>
-                    <li><a href="<%=path%>/emp/empAll">员工信息</a></li>
-                    <li><a href="javascript:;">员工考勤</a></li>
-                </ul>
-            </li>
-            <li class="menu-item">
-                <a href="javascript:;"><span class="icon-user-circle-o"></span>人事管理<i
-                        class="icon-keyboard_arrow_left"></i></a>
-                <ul>
-                    <li><a href="<%=path%>/dim/dimAll">离职记录</a></li>
-                    <li><a href="<%=path%>/emp/empDept">部门调离</a></li>
-                    <li><a href="<%=path%>/mob/query">调离记录</a></li>
-                </ul>
-            </li>
-            <li class="menu-item">
-                <a href="javascript:;"><span class="icon-book"></span>财务管理<i class="icon-keyboard_arrow_left"></i></a>
-                <ul>
-                    <li><a href="javascript:;">员工工资</a></li>
+                    <li><a href="<%=path%>/employee/selectAllEmp">员工信息</a></li>
                 </ul>
             </li>
             <li class="menu-item">
                 <a href="javascript:;"><span class="icon-gears"></span>系统管理<i class="icon-keyboard_arrow_left"></i></a>
                 <ul>
-                    <li><a href="javascript:;">操作日志</a></li>
                     <li><a href="<%=path%>/file/fileUpload">文件上传</a></li>
                     <li><a href="<%=path%>/file/fileAll">文件下载</a></li>
                 </ul>

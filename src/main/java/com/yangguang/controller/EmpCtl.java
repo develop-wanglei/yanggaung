@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 @RequestMapping(value = "/employee")
-@ResponseBody
 public class EmpCtl {
 
     @Autowired
@@ -26,12 +27,15 @@ public class EmpCtl {
     /*
     * 获取所有员工的信息
     * */
-    @RequestMapping(value = "/selectAllEmp",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
-    public String selectAllEmp(@RequestParam(value = "page",defaultValue = "1") Integer page, @RequestParam(value = "size",defaultValue = "5") Integer size){
+    @RequestMapping(value = "/selectAllEmp",produces = "text/html;charset=UTF-8")
+    public String selectAllEmp(HttpSession session, @RequestParam(value = "page",defaultValue = "1") Integer page, @RequestParam(value = "size",defaultValue = "5") Integer size){
         PageHelper.startPage(page,size);
         List<Employee> employees = employeeService.selectAllEmp();
         PageInfo pageInfo = new PageInfo(employees);
-        return Return.returnPageHelper(pageInfo);
+        if (employees!=null){
+            session.setAttribute("pageInfo",pageInfo);
+        }
+        return "emp";
     }
 
     /*

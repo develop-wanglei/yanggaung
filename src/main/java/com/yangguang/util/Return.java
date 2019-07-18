@@ -46,11 +46,11 @@ public  class  Return {
     public static String returnIntInfo(Integer i){
         JSONObject json = new JSONObject();
         if (i >0){
-            json.put("code",0);
+            json.put("success",true);
             json.put("info","数据库数据已更新");
             return json.toString();
         }else {
-            json.put("code",1);
+            json.put("success",false);
             json.put("info","数据库数据更新失败");
             return json.toString();
         }

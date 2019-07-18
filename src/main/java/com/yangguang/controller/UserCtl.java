@@ -9,6 +9,9 @@ package com.yangguang.controller;
         import org.springframework.web.bind.annotation.RequestMapping;
         import org.springframework.web.bind.annotation.RequestMethod;
         import org.springframework.web.bind.annotation.ResponseBody;
+        import org.springframework.web.servlet.ModelAndView;
+
+        import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
@@ -32,11 +35,12 @@ public class UserCtl {
      * */
     @RequestMapping(value = "/login",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String login(String username,String userpassword){
-        User user = userService.selectUser(username, userpassword);
-        JSONObject json = new JSONObject();
-        json.put("user",user.toString());
-        return json.toJSONString();
+    public String login(String username, String password, HttpSession session){
+        User user = userService.selectUser(username, password);
+        if (user!=null){
+            session.setAttribute("user",user);
+        }
+        return Return.returnEntityInfo(user);
     }
 
     /*
@@ -44,9 +48,25 @@ public class UserCtl {
      * */
     @RequestMapping(value = "/updataPwd",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String updataUserPwd(String username,String pwd){
-        int i = userService.upUserPwd(username, pwd);
+    public String updataUserPwd(String pwd,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        int i = userService.upUserPwd(user.getUserName(), pwd);
         return Return.returnIntInfo(i);
     }
 
+    @RequestMapping("/upPwd")
+    public ModelAndView upPwd(){
+        return new ModelAndView("upPwd");
+    }
+
+    @RequestMapping("/index")
+    public ModelAndView index(){
+        ModelAndView view = new ModelAndView("indexAdmin");
+        return view;
+    }
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "forward:/login.jsp";
+    }
 }

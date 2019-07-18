@@ -45,11 +45,17 @@
                                     <th class="checkbox"><input type="checkbox" class="fill listen-1" /> </th>
                                     <th>工号</th>
                                     <th>姓名</th>
-                                    <th>年龄</th>
                                     <th>性别</th>
-                                    <th>联系方式</th>
+                                    <th>出生日期</th>
+                                    <th>民族</th>
+                                    <th>学历</th>
+                                    <th>政治面貌</th>
+                                    <th>籍贯</th>
+                                    <th>手机号</th>
                                     <th>住址</th>
-                                    <th>部门</th>
+                                    <th>身份证号码</th>
+                                    <th>人员身份</th>
+                                    <th>求职意向</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -60,11 +66,17 @@
                                     <td class="checkbox"><input type="checkbox" class="fill listen-1-2" /> </td>
                                     <td>${emp.empId}</td>
                                     <td>${emp.empName}</td>
-                                    <td>${emp.empAge}</td>
-                                    <td>${emp.empSex=='M'?"男":"女"}</td>
+                                    <td>${emp.empSex==0?"男":"女"}</td>
+                                    <td>${emp.empBirthday}</td>
+                                    <td>${emp.empNation}</td>
+                                    <td>${emp.empEducation}</td>
+                                    <td>${emp.empPoliticsstatus}</td>
+                                    <td>${emp.empPlace}</td>
                                     <td>${emp.empPhone}</td>
                                     <td>${emp.empAddress}</td>
-                                    <td>${emp.department.deptName}</td>
+                                    <td>${emp.empCardid}</td>
+                                    <td>${emp.empIdentity}</td>
+                                    <td>${emp.empJob}</td>
                                     <td>
                                         <button id="update" onclick="update(${emp.empId})" class="button green">修改</button>
                                         <button class="button red" onclick="deleteDialog(this,${emp.empId})">删除</button>
@@ -84,7 +96,7 @@
                                     position : "left",
                                     // 返回当前选中的页数
                                     callback : function(rtn) {
-                                        location.href="<%=path%>/emp/empAll?pn="+rtn.pageNum;
+                                        location.href="<%=path%>/employee/selectAllEmp?page="+rtn.pageNum;
                                     }
                                 });
 
@@ -113,10 +125,10 @@
                                 /*添加*/
                                 $("#addButton").click(function() {
                                     javaex.dialog({
-                                        type : "login",	// 弹出层类型
+                                        type : "window",	// 弹出层类型
                                         width : "700",
-                                        height : "600",
-                                        url : "<%=path%>/emp/addEmp"
+                                        height : "900",
+                                        url : "<%=path%>/addEmp.jsp"
                                     });
                                 });
                                 /*修改*/

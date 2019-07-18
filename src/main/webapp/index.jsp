@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:forward page="login.jsp"></jsp:forward>
 <html>
 <head>
     <title>阳光大姐(东港店)</title>

@@ -199,7 +199,7 @@
   </update>
   <!--验证用户名和密码-->
   <select id="selectUserAndPwd" resultType="user">
-    select * from user where username=#{arg0} and userpassword=#{arg1}
+    select * from user where user_name=#{arg0} and user_password=#{arg1}
   </select>
 
 </mapper>

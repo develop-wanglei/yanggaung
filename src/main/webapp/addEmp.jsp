@@ -40,20 +40,53 @@
                     </div>
 
                 </div>
-                <div class="unit clear">
-                    <div class="left"><p class="subtitle">年龄</p></div>
-                    <div class="right">
-                        <input type="text" name="empAge" data-type="正整数" style="height: 30px;width: 50px" />
-                    </div>
-                </div>
                 <!--单选框-->
                 <div class="unit clear">
                     <div class="left"><p class="subtitle">性别</p></div>
                     <div class="right">
                         <ul class="equal-8 clear">
-                            <li><input type="radio"  class="fill" name="empSex" checked value="M"/>男</li>
-                            <li><input type="radio" class="fill" name="empSex" value="F"/>女</li>
+                            <li><input type="radio"  class="fill" name="empSex"  value=0/>男</li>
+                            <li><input type="radio" class="fill" name="empSex" checked value=1/>女</li>
                         </ul>
+                    </div>
+                </div>
+                <div class="unit clear">
+                    <div class="left"><p class="subtitle">出生日期</p></div>
+                    <div class="right">
+                        <input type="text" id="date1" class="date" name="time" style="width: 140px;" value="" readonly/>
+                    </div>
+                </div>
+                <div class="unit clear">
+                    <div class="left"><p class="subtitle">民族</p></div>
+                    <div class="right">
+                        <input type="text" name="empNation"  style="height: 30px;width: 40px;" />
+                    </div>
+                </div>
+                <div class="unit clear">
+                    <div class="left"><p class="subtitle">学历</p></div>
+                    <div class="right">
+                        <select id="select" name="empEducation">
+                            <option value="">请选择</option>
+                            <option value="小学">小学</option>
+                            <option value="初中">初中</option>
+                            <option value="高中">高中</option>
+                            <option value="中专">中专</option>
+                            <option value="大专">大专</option>
+                            <option value="本科">本科</option>
+                            <option value="无">无</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="unit clear">
+                    <div class="left"><p class="subtitle">政治面貌</p></div>
+                    <div class="right">
+                        <input type="text" name="empPoliticsstatus"  style="height: 30px;width: 40px;"  />
+                    </div>
+                </div>
+                <div class="unit clear">
+                    <div class="left"><p class="subtitle">籍贯</p></div>
+                    <div class="right">
+                        <input type="text" name="empPlace" data-type="必填" style="height: 30px" />
                     </div>
                 </div>
                 <div class="unit clear">
@@ -62,28 +95,29 @@
                         <input type="text" name="empPhone" data-type="手机号" style="height: 30px" class="icon-headphones" />
                     </div>
                 </div>
-                <!--下拉选择框-->
-                <div class="unit clear">
-                    <div class="left"><p class="subtitle">部门</p></div>
-                    <div class="right">
-                        <select id="dept" name="deptId">
-                            <option value="">请选择</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="unit clear">
-                    <div class="left"><p class="subtitle">职位</p></div>
-                    <div class="right">
-                        <select id="type" name="typeId">
-                            <option value="">请选择</option>
-                        </select>
-                    </div>
-                </div>
                 <!--文本域-->
                 <div class="unit clear">
                     <div class="left"><p class="subtitle">住址</p></div>
                     <div class="right">
                         <textarea data-type="中文" name="empAddress" class="desc" placeholder="请填写住址"></textarea>
+                    </div>
+                </div>
+                <div class="unit clear">
+                    <div class="left"><p class="subtitle">身份证号</p></div>
+                    <div class="right">
+                        <input type="text" name="empCardid" data-type="身份证号" style="height: 30px;width: 250px;"  class="icon-headphones" />
+                    </div>
+                </div>
+                <div class="unit clear">
+                    <div class="left"><p class="subtitle">人员身份</p></div>
+                    <div class="right">
+                        <input type="text" name="empIdentity"  style="height: 30px"  />
+                    </div>
+                </div>
+                <div class="unit clear">
+                    <div class="left"><p class="subtitle">求职意向</p></div>
+                    <div class="right">
+                        <textarea data-type="中文" name="empJob" class="desc" placeholder="请填写意向，两个意向之间用“，”隔开"></textarea>
                     </div>
                 </div>
                 <!--提交按钮-->
@@ -140,7 +174,16 @@
     javaex.tag({
         id : "tag"
     });
+    //日期选择
+    javaex.date({
+        id : "date1",		// 承载日期组件的id
+        monthNum : 1,		// 1代表选择单日日期
+        date : "2019-01-01",	// 选择的日期
+        // 重新选择日期之后返回一个时间对象
+        callback : function(rtn) {
 
+        }
+    });
     // 监听点击保存按钮事件
     $("#save").click(function() {
         // 表单验证函数
